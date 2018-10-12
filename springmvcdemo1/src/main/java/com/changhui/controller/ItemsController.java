@@ -12,9 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 public class ItemsController {
@@ -35,7 +33,7 @@ public class ItemsController {
         return view;
     }
 
-    @RequestMapping("/queryitem.action")
+    @RequestMapping("/queryItem.action")
     public ModelAndView queryItems() throws UnsupportedEncodingException {
 
         request.setCharacterEncoding("utf-8");

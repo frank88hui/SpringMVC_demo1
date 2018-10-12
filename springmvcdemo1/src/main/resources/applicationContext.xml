@@ -54,8 +54,7 @@
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
     <!--包扫描-->
-    <context:component-scan base-package="com.changhui.service"/>
-    <context:component-scan base-package="com.changhui.proxy"/>
+    <context:component-scan base-package="com.changhui"/>
 
     <!--开启aop-->
     <aop:aspectj-autoproxy/>
