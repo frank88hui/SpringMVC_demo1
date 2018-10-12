@@ -1,5 +1,7 @@
 package com.changhui.pojo;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class Items {
@@ -47,6 +49,7 @@ public class Items {
         this.pic = pic == null ? null : pic.trim();
     }
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     public Date getCreatetime() {
         return createtime;
     }
