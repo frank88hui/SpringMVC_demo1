@@ -34,4 +34,12 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
+    <bean class="org.springframework.format.support.FormattingConversionServiceFactoryBean" id="formattingConversionService">
+        <property name="converters" >
+            <set>
+                <bean class="com.changhui.utils.DateConverter"></bean>
+            </set>
+        </property>
+    </bean>
+
 </beans>

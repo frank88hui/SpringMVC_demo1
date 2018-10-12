@@ -33,15 +33,14 @@ public class ItemsController {
     }
 
     @RequestMapping("/queryItem.action")
-    public ModelAndView queryItems(QueryVo queryVo) {
+    public String queryItems(Model model,QueryVo queryVo) {
 
-        ModelAndView view = new ModelAndView();
         ItemsExample itemsExample = new ItemsExample();
         itemsExample.createCriteria().andNameLike("%"+queryVo.getItems().getName()+"%").andDetailLike("%"+queryVo.getItems().getDetail()+"%");
         List<Items> items=itemService.queryItem(itemsExample);
-        view.addObject("itemList", items);
-        view.setViewName("itemList");
-        return view;
+        model.addAttribute("itemList",items);
+
+        return "itemList";
     }
 
     @RequestMapping("/itemEdit.action")

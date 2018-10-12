@@ -49,7 +49,7 @@ public class Items {
         this.pic = pic == null ? null : pic.trim();
     }
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME,pattern = "yyyy-MM-dd HH:mm:ss")
     public Date getCreatetime() {
         return createtime;
     }
