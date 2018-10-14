@@ -22,7 +22,11 @@
                 contentType: false,
                 processData: false,
                 success: function (data) {
-                    $("#img").prop('src', "/pic/"+data);
+                    if ($("#img").prop('src') == undefined) {
+                        $("#picspan").html("<img src=/pic/"+data+" id=\"img\" width=100 height=100/><br/>")
+                    } else {
+                        $("#img").prop('src', "/pic/" + data);
+                    }
                     $("#picpath").val(data);
                 },
                 error: function (returndata) {
@@ -59,12 +63,14 @@
         <tr>
             <td>商品图片</td>
             <td>
+                <span id="picspan">
                 <c:if test="${item.pic !=null}">
                     <img src="/pic/${item.pic}" id="img" width=100 height=100/>
                     <br/>
                 </c:if>
-                <input type="text" id="picpath" name="pic" value="${item.pic}" hidden="hidden" />
-                <input type="file" name="pictureFile" onchange="doUpload()" />
+                </span>
+                <input type="text" id="picpath" name="pic" value="${item.pic}" hidden="hidden"/>
+                <input type="file" name="pictureFile" onchange="doUpload()"/>
             </td>
         </tr>
 

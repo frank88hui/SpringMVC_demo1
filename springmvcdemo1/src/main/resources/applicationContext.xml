@@ -26,9 +26,9 @@
     <context:property-placeholder location="classpath:db.properties"/>
 
     <!--配置数据库连接池-->
-    <bean class="com.alibaba.druid.pool.DruidDataSource" id="dataSource">
+    <bean class="com.zaxxer.hikari.HikariDataSource" id="dataSource">
         <property name="driverClassName" value="${driver}"/>
-        <property name="url" value="${url}"/>
+        <property name="jdbcUrl" value="${url}"/>
         <property name="username" value="${username}"/>
         <property name="password" value="${password}"/>
     </bean>
