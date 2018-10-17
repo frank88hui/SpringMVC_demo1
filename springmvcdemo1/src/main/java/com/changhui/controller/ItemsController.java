@@ -51,7 +51,7 @@ public class ItemsController {
         ItemsExample itemsExample = new ItemsExample();
         try {
             itemsExample.createCriteria().andIdIn(queryVo.getIds()).andNameLike("%" + queryVo.getItems().getName() + "%").andDetailLike("%" + queryVo.getItems().getDetail() + "%");
-        }catch (Exception e){
+        } catch (Exception e) {
             itemsExample.createCriteria().andNameLike("%" + queryVo.getItems().getName() + "%").andDetailLike("%" + queryVo.getItems().getDetail() + "%");
         }
         List<Items> items = itemService.queryItem(itemsExample);
@@ -69,13 +69,7 @@ public class ItemsController {
     }
 
     @RequestMapping("/updateitem.action")
-    public String updateItem(Items item , MultipartFile pictureFile) throws IOException {
-
-        String name = pictureFile.getOriginalFilename();
-        String newName = UUID.randomUUID().toString()+name.substring(name.indexOf("."));
-        File file = new File("D:\\Develop\\upload\\pics\\"+newName);
-        pictureFile.transferTo(file);
-        item.setPic(newName);
+    public String updateItem(Items item) throws IOException {
 
         ItemsExample itemsExample = new ItemsExample();
         itemsExample.createCriteria().andIdEqualTo(item.getId());
@@ -93,12 +87,15 @@ public class ItemsController {
 
     @RequestMapping("/ajaxUpload.action")
     @ResponseBody
-    public String ajaxUpload(MultipartFile pictureFile) throws IOException {
+    public String ajaxUpload(String pic, MultipartFile pictureFile) throws IOException {
 
-            String name = pictureFile.getOriginalFilename();
-            String newName = UUID.randomUUID().toString()+name.substring(name.indexOf("."));
-            File file = new File("D:\\Develop\\upload\\pics\\"+newName);
-            pictureFile.transferTo(file);
+        String name = pictureFile.getOriginalFilename();
+        if (!name.contains(".")) {
+            return pic;
+        }
+        String newName = UUID.randomUUID().toString() + name.substring(name.indexOf("."));
+        File file = new File("D:\\Develop\\upload\\pics\\" + newName);
+        pictureFile.transferTo(file);
 
         return newName;
     }

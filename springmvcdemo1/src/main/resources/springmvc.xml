@@ -51,5 +51,22 @@
         <property name="maxUploadSize" value="5242880"/>
     </bean>
 
+    <!--拦截器配置-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <!--匹配所有路径-->
+            <mvc:mapping path="/**"/>
+            <bean class="com.changhui.intercepter.MyIntercepter1" id="myIntercepter1"/>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="com.changhui.intercepter.MyIntercepter2" id="myIntercepter2"/>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="com.changhui.intercepter.LoginIntercepter" id="loginIntercepter"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
 
 </beans>
